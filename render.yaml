@@ -2,16 +2,18 @@ services:
   - type: web
     name: myapp-frontend
     env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/build
+    dir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
     github:
       repo: justcausee/to-do-list
       branch: main
 
   - type: web
     name: myapp-backend
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    dir: backend
+    buildCommand: npm install
+    startCommand: npm start
     github:
       repo: justcausee/to-do-list
       branch: main
