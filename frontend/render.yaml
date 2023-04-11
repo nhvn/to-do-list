@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: myapp-frontend
-    env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/build
