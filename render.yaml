@@ -1,8 +1,7 @@
 services:
   - type: web
     name: myapp-frontend
-    env: 
-      static
+    env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/build
     github:
@@ -15,3 +14,6 @@ services:
     startCommand: cd backend && npm start
     env:
       DATABASE_URL: postgresql://postgres:password@localhost:5432/to-do-list
+    github:
+      repo: justcausee/to-do-list
+      branch: main
