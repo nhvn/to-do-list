@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: myapp-backend
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
-    env:
-      DATABASE_URL: postgresql://postgres:password@localhost:5432/to-do-list
