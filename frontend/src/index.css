@@ -1,13 +1,131 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Quicksand";
+  color: #333;
+ 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/* form css  */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+ label {
+  text-align: left;
+  display: block;
+}
+#h2 {
+  font-size: 20px;
+  color: #422ba8;
+  margin-bottom: 30px;
+  text-align: center;
+}
+input {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+textarea{
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+#button {
+  background: #422ba8;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*navbar css*/
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #422ba8;
+}
+.navbar .links {
+  margin-left: auto;
+  display: flex;
+  padding: 35px;
+}
+.navbar a {
+
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #ec26d2;
+}
+
+/*home css*/
+
+.home h1{
+  color: #422ba8;
+  text-align: center;
+}
+.mission h2{
+  padding: 20px;
+  margin-top: 50px;
+  color:#422ba8;
+  text-align: center;
+}
+.mission p{
+  text-align: center;
+  padding: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-size: 20px;
+}
+.start h2{
+  padding: 20px;
+  margin-top: 50px;
+  color:#422ba8;
+  text-align: center;
+}
+.start p{
+  text-align: center;
+  padding: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-size: 20px;
+}
+.home button{
+  display: flex;
+  align-content: center;
+  margin-top: 70px;
+  margin-left: 700px;
+  background: #422ba8;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
