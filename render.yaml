@@ -3,7 +3,6 @@ services:
     name: myapp-frontend
     env: static
     buildCommand: cd frontend && npm install && npm run build
-    workingDirectory: frontend
     staticPublishPath: frontend/build
     github:
       repo: justcausee/to-do-list
@@ -13,7 +12,8 @@ services:
     name: myapp-backend
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
-    workingDirectory: backend
     github:
       repo: justcausee/to-do-list
       branch: main
+    env:
+      DATABASE_URL: postgresql://postgres:password@localhost:5432/to-do-list
