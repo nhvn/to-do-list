@@ -129,3 +129,52 @@ select {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.buttons{
+  display: flex;
+  margin-left: 705px;
+  align-items: center;
+}
+
+/* register css */
+
+.register h1{
+  text-align: center;
+  padding: 30px;
+  color: #422ba8;
+}
+.register button{
+  background: #422ba8;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*login css*/
+.login h1{
+  text-align: center;
+  padding: 30px;
+  color: #422ba8;
+}
+.login button{
+  background: #422ba8;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* profile css */
+.profilepage h1{
+  text-align: center;
+  padding: 30px;
+  color: #422ba8;
+}
+.profilepage h2{
+  text-align: center;
+  padding: 30px;
+  color: #422ba8;
+}

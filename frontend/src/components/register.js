@@ -1,4 +1,3 @@
-
 // app.post('/register', async (req, res) => {
 //   try {
 //     const { name, email, password } = req.body;
@@ -11,37 +10,72 @@
 //   }
 // });
 
-import React from 'react'
+import {useState} from 'react'
 
-function Register() {
+const Register = () => {
+
+  const [ name, setName ] = useState('');
+  const [ last, setLast ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ user, setUser ] = useState('');
+  const [ pass, setPass ] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const register = { name, last, email, pass};
+    console.log({register})
+}
+
   return (
-    <div>
-      <form>
+    <div className='register'>
+      <h1>Create an Account!</h1>
+      <form onSubmit={handleSubmit}>
         <label>First Name</label>
-        <input>
-        
+        <input
+        type="text"
+        required
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        >
         </input>
 
         <label>Last Name</label>
-        <input>
-        
+        <input
+           type="text"
+           required
+           value={last}
+           onChange={(e) => setLast(e.target.value)}
+        >
         </input>
 
         <label>Email</label>
-        <input>
-        
+        <input
+           type="text"
+           required
+           value={email}
+           onChange={(e) => setEmail(e.target.value)}
+        >
         </input>
 
         <label>Username</label>
-          <input>
-          
+          <input
+             type="text"
+             required
+             value={user}
+             onChange={(e) => setUser(e.target.value)}
+          >
           </input>
 
           <label>Password</label>
-          <input>
-          
+          <input
+             type="text"
+             required
+             value={pass}
+             onChange={(e) => setPass(e.target.value)}
+          >
           </input> 
-          <button id="register">Create Account!</button>
+
+          <button id="createacc">Create Account</button>
       </form>
     </div>
   )

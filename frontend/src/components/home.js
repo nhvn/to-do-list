@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Navigate } from 'react-router';
 
 function Home() {
+
+const[login,setLogin] = useState(false);
+const[create, setCreate] = useState(false);
+
+if (login){
+  return <Navigate to="/login" />;
+}
+else if (create){
+  return <Navigate to = "/register" />;
+}
+
   return (
     <div className='home'>
 
@@ -16,9 +28,18 @@ function Home() {
             <h2>How do you get started?</h2>
             <p>Super simple! Just click the button below to create an account and then you can start creating tasks!</p>
             </div>
-
-        <button id="reglink">Login or Sign Up!</button>
-
+      <div className='buttons'>
+        <button 
+        id="login" onClick={()=>{
+          setLogin(true);
+        }}>
+          Login</button>
+        <button
+         id="reglink" onClick={()=>{
+            setCreate(true);
+         }}>
+            Sign Up</button>
+        </div>
     </div>
   )
 }

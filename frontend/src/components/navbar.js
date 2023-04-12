@@ -12,6 +12,8 @@ function Navbar() {
                 <br></br>
                 <a href='/register'>Create Account</a>
                 <br></br>
+                <a href="/login">Login</a>
+                <br></br>
         </div>
     </nav>
   )
