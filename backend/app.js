@@ -197,6 +197,23 @@ app.put('/tasks/:task_id/incomplete', async (req, res) => {
         .json({ error: 'An error occurred while deleting the task' });
     }
   });
+
+  // Logout the current user
+app.post('/logout', async (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred while logging out' });
+      } else {
+        res.status(200).json({ message: 'Logged out successfully' });
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while logging out' });
+  }
+});
   
   // Start server
   const port = process.env.PORT || 8000;

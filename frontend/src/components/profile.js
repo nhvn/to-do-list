@@ -50,6 +50,8 @@ function Profile() {
     setUpdatedTask({});
   };
 
+
+  // CUT OFF HERE
   const renderTask = (task) => {
     if (editingTask === task.task_id) {
       return (
@@ -95,7 +97,7 @@ function Profile() {
     return (
       <li key={task.task_id}>
         <span>{task.title}</span>
-        <button onClick={() => setEditingTask(task.task_id)}>Edit</button>
+        <button className="editButton" onClick={() => setEditingTask(task.task_id)}>Edit</button>
       </li>
     );
   };

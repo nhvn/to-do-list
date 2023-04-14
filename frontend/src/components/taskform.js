@@ -77,13 +77,13 @@ function TaskForm() {
             <option value="Personal">Goals</option>
         </select>
         <button id="button">Add Task</button>
-        <label>Completed</label>
+        {/* <label>Completed</label>
         <input
           type='checkbox'
           checked={completed}
           onChange={(e) => setCompleted(e.target.checked)}
         />
-        <button id='submitTask'>Create Task</button>
+        <button id='submitTask'>Create Task</button> */}
       </form>
       {error && <p className="error">{error}</p>}
       {taskCreated && <p className="success">Task created successfully!</p>}

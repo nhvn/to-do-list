@@ -53,7 +53,6 @@ function Login() {
         <button id='submitLogin'>Login</button>
       </form>
       {error && <p className='error'>{error}</p>}
-      <p>Please log in to continue.</p>
     </div>
   );
 }
