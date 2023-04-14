@@ -1,84 +1,61 @@
-// app.post('/register', async (req, res) => {
-//   try {
-//     const { name, email, password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const result = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *', [name, email, hashedPassword]);
-//     res.status(201).json(result.rows[0]);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: 'An error occurred while registering a new user' });
-//   }
-// });
-
-import {useState} from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error, setError] = useState('');
 
-  const [ name, setName ] = useState('');
-  const [ last, setLast ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ user, setUser ] = useState('');
-  const [ pass, setPass ] = useState('');
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const register = { name, last, email, pass};
-    console.log({register})
-}
+    try {
+      const response = await axios.post('http://localhost:8000/register', {
+        name,
+        email,
+        password: pass,
+      });
+      console.log('New user registered:', response.data);
+      // You can do something here after the user is registered successfully, e.g. show a success message or redirect to a new page
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setError('An error occurred while registering a new user');
+    }
+  };
 
   return (
     <div className='register'>
       <h1>Create an Account!</h1>
       <form onSubmit={handleSubmit}>
-        <label>First Name</label>
+        <label>Full Name</label>
         <input
-        type="text"
-        required
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        >
-        </input>
-
-        <label>Last Name</label>
-        <input
-           type="text"
-           required
-           value={last}
-           onChange={(e) => setLast(e.target.value)}
-        >
-        </input>
+          type='text'
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
         <label>Email</label>
         <input
-           type="text"
-           required
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}
-        >
-        </input>
+          type='email'
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <label>Username</label>
-          <input
-             type="text"
-             required
-             value={user}
-             onChange={(e) => setUser(e.target.value)}
-          >
-          </input>
+        <label>Password</label>
+        <input
+          type='password'
+          required
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+        />
 
-          <label>Password</label>
-          <input
-             type="text"
-             required
-             value={pass}
-             onChange={(e) => setPass(e.target.value)}
-          >
-          </input> 
-
-          <button id="createacc">Create Account</button>
+        <button id='createacc'>Create Account</button>
+        {error && <p className='error-message'>{error}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
