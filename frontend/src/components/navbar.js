@@ -37,7 +37,7 @@ function Navbar() {
         <h1>Task Master</h1>
       </a>
       <div className='links'>
-        <a href="/profile">Home</a>
+        <a href="/profile">My Tasks</a>
         <br />
         <a href="/create">Create Task</a>
         <br />
@@ -49,7 +49,7 @@ function Navbar() {
           </>
         ) : (
           <>
-            <a href='/register'>Create Account</a>
+            <a href='/register'>Register</a>
             <br />
             <a href="/login">Login</a>
             <br />

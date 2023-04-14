@@ -13,6 +13,18 @@ function TaskForm() {
   const [taskCreated, setTaskCreated] = useState(false);
   const [error, setError] = useState('');
 
+  const updateTask = async (taskId, data) => {
+    try {
+      const response = await axios.put(`http://localhost:8000/tasks/${taskId}`, data, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error updating task:', error);
+      throw new Error('An error occurred while updating the task');
+    }
+  };  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,6 +36,10 @@ function TaskForm() {
           due_date: dueDate,
           priority,
           completed,
+          type, // add the task type to the request body
+        },
+        {
+          withCredentials: true,
         }
       );
       console.log('Task created:', response.data);
@@ -76,19 +92,23 @@ function TaskForm() {
             <option value="Urgent">Urgent</option>
             <option value="Personal">Goals</option>
         </select>
-        <button id="button">Add Task</button>
-        {/* <label>Completed</label>
+        <div className='checkbox-container'>
+        <label htmlFor="completedCheckbox" className="completed-label">Completed</label>
         <input
           type='checkbox'
+          id='completedCheckbox'
           checked={completed}
           onChange={(e) => setCompleted(e.target.checked)}
         />
-        <button id='submitTask'>Create Task</button> */}
+      </div>
+        <button id='button'>Add Task</button>
       </form>
       {error && <p className="error">{error}</p>}
       {taskCreated && <p className="success">Task created successfully!</p>}
     </div>
   );
 }
+
+
 
 export default TaskForm;
