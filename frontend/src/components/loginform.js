@@ -1,28 +1,26 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../authContext';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { handleLogin, setToken } = useAuth();
+  const { handleLogin } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/login', {
+      await axios.post('http://localhost:8000/login', {
         email,
         password,
       });
-      console.log("Access token:", response.data.accessToken);
-      // Set the token in the AuthContext
-      setToken(response.data.accessToken);
-      // Call handleLogin instead of setLoggedIn
-      handleLogin(response.data.accessToken);
+      handleLogin();
       console.log(`Logged in successfully as ${email}`);
-      setSubmitLogin(true);
+      navigate('/profile');
     } catch (error) {
       console.error('Error during login:', error);
       if (error.response && error.response.status === 401) {
@@ -32,11 +30,6 @@ function Login() {
       }
     }
   };
-
-  const [submitLogin, setSubmitLogin] = useState(false);
-  if (submitLogin) {
-    return <Navigate to="/profile" />;
-  }
 
   return (
     <div className='login'>

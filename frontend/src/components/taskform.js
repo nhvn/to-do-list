@@ -1,26 +1,21 @@
+// NO JWT
+
 import { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../authContext';
 
 function TaskForm() {
-  const { token } = useAuth();
-  console.log('Token in TaskForm:', token);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('');
   const [completed, setCompleted] = useState(false);
+  const [type, setType] = useState('Work'); // Add this line
   const [taskCreated, setTaskCreated] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!token) {
-        console.log("Token not defined");
-        return;
-      }
-      console.log("Token:", token); // Debugging: Log the token to the console
       const response = await axios.post(
         'http://localhost:8000/create',
         {
@@ -29,11 +24,6 @@ function TaskForm() {
           due_date: dueDate,
           priority,
           completed,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         }
       );
       console.log('Task created:', response.data);
@@ -76,6 +66,17 @@ function TaskForm() {
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
         />
+        <label>Task Type</label>
+        <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+        >
+            <option value="Work">Work</option>
+            <option value="Chores">Chores</option>
+            <option value="Urgent">Urgent</option>
+            <option value="Personal">Goals</option>
+        </select>
+        <button id="button">Add Task</button>
         <label>Completed</label>
         <input
           type='checkbox'
