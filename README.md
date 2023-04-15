@@ -15,7 +15,7 @@ http://localhost:8000
 
 Endpoints
 | Method | Path                             | Purpose                                  |
-| ------ | -------------------------------- | ---------------------------------------- |
+|--------|----------------------------------|------------------------------------------|
 | GET    | /                                | Home page                                |
 | GET    | /tasks                           | Task index page                          |
 | POST   | /tasks                           | Create new task                          |
@@ -30,14 +30,13 @@ Endpoints
 | POST   | /login                           | Login a user                             |
 | POST   | /logout                          | Logout the current user                  |
 
-
 React App
 Base URL
 http://localhost:3000
 
 Routes
 | Path               | Component      | Purpose                                  |
-| ------------------ | -------------- | ---------------------------------------- |
+|--------------------|----------------|------------------------------------------|
 | /                  | Home.js        | Home page                                |
 | /register          | SignUpForm.js  | Form for creating a new user             |
 | /tasks             | TaskIndex.js   | List of tasks                            |
@@ -45,11 +44,10 @@ Routes
 | /tasks/:task_id    | TaskDetails.js | Details of a task, including its comments, and a form to create a new comment |
 | /tasks/:task_id/edit | EditTaskForm.js | Form for editing a task                 |
 
-
 Database Tables
 Tasks
 | Column      | Type          | Constraints                                        |
-| ----------- | ------------- | -------------------------------------------------- |
+|-------------|---------------|----------------------------------------------------|
 | task_id     | SERIAL        | PRIMARY KEY                                        |
 | user_id     | INTEGER       | NOT NULL REFERENCES users(user_id) ON DELETE CASCADE |
 | title       | VARCHAR(255)  | NOT NULL                                           |
@@ -60,13 +58,13 @@ Tasks
 | created_at  | TIMESTAMP     | DEFAULT NOW()                                      |
 | type        | VARCHAR(20)   | NOT NULL                                           |
 
-
 Users
 | Column     | Type         | Constraints                          |
-| ---------- | ------------ | ------------------------------------ |
+|------------|--------------|--------------------------------------|
 | user_id    | SERIAL       | PRIMARY KEY                          |
 | name       | VARCHAR(100) | NOT NULL                             |
 | email      | VARCHAR(100) | NOT NULL UNIQUE                      |
 | password   | VARCHAR(255) | NOT NULL                             |
 | created_at | TIMESTAMP    | DEFAULT NOW()                        |
+
 
