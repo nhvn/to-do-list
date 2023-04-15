@@ -43,6 +43,7 @@ Routes
 | /tasks/:task_id/edit | EditTaskForm.js | Form for editing a task                 |
 
 Database Tables
+
 Tasks
 | Column      | Type          | Constraints                                        |
 |-------------|---------------|----------------------------------------------------|
