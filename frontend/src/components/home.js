@@ -15,7 +15,7 @@ else if (create){
 
   return (
     <div className='home'>
-
+    {/* <img className='my-image' src='/checklist.png' alt='checklist' />  CAN BE USED TO ADD PICS */} 
         <h1>Welcome to Task Master!</h1>
            <div className="mission">
             <h2> What is our mission?</h2>
@@ -26,7 +26,7 @@ else if (create){
             </div>
             <div className='start'>
             <h2>How do you get started?</h2>
-            <p>Super simple! Just click the button below to create an account and then you can start creating tasks!</p>
+            <p>Super simple! Just click on "Register" to create an account and then you can start creating tasks!</p>
             </div>
       <div className='buttons'>
         <button 

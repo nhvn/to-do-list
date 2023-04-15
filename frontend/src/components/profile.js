@@ -23,7 +23,7 @@ function Profile() {
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching tasks:", error);
-        setError("An error occurred while fetching tasks.");
+        setError(<div className="error">An error occurred while fetching tasks.</div>);
         setIsLoading(false);
       }
     };
