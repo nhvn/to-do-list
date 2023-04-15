@@ -13,17 +13,18 @@ function TaskForm() {
   const [taskCreated, setTaskCreated] = useState(false);
   const [error, setError] = useState('');
 
-  const updateTask = async (taskId, data) => {
-    try {
-      const response = await axios.put(`http://localhost:8000/tasks/${taskId}`, data, {
-        withCredentials: true,
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error updating task:', error);
-      throw new Error('An error occurred while updating the task');
-    }
-  };  
+  // NOT USED? 
+  // const updateTask = async (taskId, data) => {
+  //   try {
+  //     const response = await axios.put(`http://localhost:8000/tasks/${taskId}`, data, {
+  //       withCredentials: true,
+  //     });
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error('Error updating task:', error);
+  //     throw new Error('An error occurred while updating the task');
+  //   }
+  // };  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

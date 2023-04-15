@@ -50,8 +50,6 @@ function Profile() {
     setUpdatedTask({});
   };
 
-
-  // CUT OFF HERE
   const renderTask = (task) => {
     if (editingTask === task.task_id) {
       return (

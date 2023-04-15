@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
@@ -9,11 +9,13 @@ import Login from "./components/loginform";
 import { AuthProvider } from "./authContext";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
   return (
     <AuthProvider>
       <Router>
         <div className="App">
-          <Navbar />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} userName={userName} setUserName={setUserName} />
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />

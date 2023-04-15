@@ -7,7 +7,6 @@
  
 }
 
-
 /* form css  */
 form {
   max-width: 400px;
@@ -60,30 +59,58 @@ select {
 /*navbar css*/
 
 .navbar {
-  padding: 5px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  padding: 0 10px;
 }
 .navbar h1 {
   color: #422ba8;
 }
-.navbar .links {
-  margin-left: auto;
+.navbar .nav-links {
   display: flex;
-  padding: 35px;
+  align-items: center;
 }
-.navbar a {
-  margin-left: 2px;
+.navbar .links,
+.navbar .auth-links {
+  display: flex;
+  align-items: center;
+}
+.navbar .links a,
+.navbar .auth-links a {
+  margin-right: 10px;
   text-decoration: none;
-  padding: 6px;
+  color: #422ba8;
+  padding: 40px;
+}
+.navbar .links a:last-child,
+.navbar .auth-links a:last-child {
+  margin-right: 0;
 }
 .navbar a:hover {
   color: #ec26d2;
 }
+.logout-container {
+  display: inline-block;
+  margin-left: 20px;
+}
+.logout-container button {
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.logout-container button:hover {
+  background-color: #da9a95;
+}
+
 
 /*home css*/
 
@@ -166,6 +193,12 @@ select {
   border-radius: 8px;
   cursor: pointer;
 }
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
 
 /* profile css */
 .profilepage h1{

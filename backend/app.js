@@ -9,7 +9,8 @@ const session = require('express-session');
 const app = express();
 
 // Use cors middleware to allow cross-origin requests
-app.use(cors({
+app.use(
+  cors({
   origin: "http://localhost:3000",
   credentials: true
 }));
@@ -18,11 +19,17 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Use express-session middleware for session management
+app.use(express.json());
 app.use(
   session({
-    secret: '54321', // Custom secret string
+    secret: 'your-session-secret', // Replace with your own secret
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      secure: false, // Set to true only if using HTTPS
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    },
   })
 );
 
@@ -73,7 +80,7 @@ app.post('/login', async (req, res) => {
       res.status(200).json({ user_id: user.user_id, email: user.email });
     } else {
       return res.status(401).json({ error: 'Invalid email or password' });
-    }
+    }    
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error occurred while logging in' });
@@ -197,6 +204,18 @@ app.put('/tasks/:task_id/incomplete', async (req, res) => {
         .json({ error: 'An error occurred while deleting the task' });
     }
   });
+
+// Check if the user is logged in
+app.get('/check_login', async (req, res) => {
+  if (req.session && req.session.user) {
+    const result = await pool.query('SELECT name FROM users WHERE user_id = $1', [req.session.user.user_id]);
+    const name = result.rows[0].name;
+    res.status(200).json({ message: 'User is logged in', name: name });
+  } else {
+    res.status(401).json({ message: 'User is not logged in' });
+  }
+});
+
 
   // Logout the current user
 app.post('/logout', async (req, res) => {

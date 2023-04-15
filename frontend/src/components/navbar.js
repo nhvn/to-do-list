@@ -1,63 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
-function Navbar() {
-  const [loggedIn, setLoggedIn] = useState(false); // add state for checking if user is logged in
+function Navbar({ loggedIn, setLoggedIn, userName, setUserName }) {
 
   useEffect(() => {
-    // check if user is logged in
-    axios.get("http://localhost:8000/check_login")
-      .then((response) => {
+    const fetchLoginStatus = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/check_login', { withCredentials: true });
         if (response.status === 200) {
           setLoggedIn(true);
+          setUserName(response.data.name);
+          localStorage.setItem('name', response.data.name);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
-  }, []);
+      }
+    };
+  
+    fetchLoginStatus();
+  }, [setLoggedIn, setUserName]);
+  
 
   const handleLogout = () => {
-    // make a logout request to the server
-    axios.post("http://localhost:8000/logout")
+    axios
+      .post('http://localhost:8000/logout', {}, { withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           setLoggedIn(false);
-          localStorage.clear(); // clear the email from local storage
+          setUserName('');
+          localStorage.removeItem('name');
         }
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  };  
 
   return (
     <nav className='navbar'>
-      <a href="/">
+      <a href='/'>
         <h1>Task Master</h1>
       </a>
-      <div className='links'>
-        <a href="/profile">My Tasks</a>
-        <br />
-        <a href="/create">Create Task</a>
-        <br />
+      <div className='nav-links'>
+        <div className='links'>
+          <a href='/profile'>My Tasks</a>
+          <a href='/create'>Create Task</a>
+        </div>
         {loggedIn ? (
-          <>
-            <button onClick={handleLogout}>Logout</button>
-            <br />
-            <span>Logged in as {localStorage.getItem('email')}</span>
-          </>
+          <div className='user-info'>
+            <span>{userName}</span>
+            <div className="logout-container">
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          </div>
         ) : (
-          <>
+          <div className='auth-links'>
             <a href='/register'>Register</a>
-            <br />
-            <a href="/login">Login</a>
-            <br />
-          </>
+            <a href='/login'>Login</a>
+          </div>
         )}
       </div>
     </nav>
-  )
+  );
 }
 
 export default Navbar;

@@ -14,20 +14,22 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/login', {
+      const response = await axios.post('http://localhost:8000/login', {
         email,
         password,
       });
-      handleLogin();
+
+      const userName = response.data.user.name; // Extract user's name from API response
+      handleLogin(userName); // Pass user's name to the handleLogin function
       console.log(`Logged in successfully as ${email}`);
       navigate('/profile');
     } catch (error) {
       console.error('Error during login:', error);
       if (error.response && error.response.status === 401) {
-        setError('Invalid email or password');
+        setError(<div className="error">Invalid email or password</div>);
       } else {
-        setError('An unexpected error occurred');
-      }
+        setError(<div className="error">An unexpected error occurred</div>);
+      }      
     }
   };
 
@@ -52,7 +54,7 @@ function Login() {
 
         <button id='submitLogin'>Login</button>
       </form>
-      {error && <p className='error'>{error}</p>}
+      {error && error}
     </div>
   );
 }
