@@ -24,8 +24,6 @@ Endpoints
 | PUT    | /tasks/:task_id/complete         | Mark a task as complete                  |
 | PUT    | /tasks/:task_id/incomplete       | Mark a task as incomplete                |
 | DELETE | /tasks/:task_id                  | Delete a particular task                 |
-| POST   | /tasks/:task_id/comments         | Create a comment about a particular task |
-| DELETE | /tasks/:task_id/comments/:comment_id | Delete a comment about a particular task |
 | POST   | /register                        | Register a new user                      |
 | POST   | /login                           | Login a user                             |
 | POST   | /logout                          | Logout the current user                  |
