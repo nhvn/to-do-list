@@ -3,8 +3,8 @@ import { Navigate } from 'react-router';
 
 function Home() {
 
-const[login,setLogin] = useState(false);
-const[create, setCreate] = useState(false);
+const[login] = useState(false);
+const[create] = useState(false);
 
 if (login){
   return <Navigate to="/login" />;
@@ -28,18 +28,6 @@ else if (create){
             <h2>How do you get started?</h2>
             <p>Super simple! Just click on "Register" to create an account and then you can start creating tasks!</p>
             </div>
-      {/* <div className='buttons'>
-        <button 
-        id="login" onClick={()=>{
-          setLogin(true);
-        }}>
-          Login</button>
-        <button
-         id="reglink" onClick={()=>{
-            setCreate(true);
-         }}>
-            Sign Up</button>
-        </div> */}
     </div>
   )
 }
