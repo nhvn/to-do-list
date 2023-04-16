@@ -22,6 +22,7 @@ function Login() {
       const userName = response.data.user.name; // Extract user's name from API response
       handleLogin(userName); // Pass user's name to the handleLogin function
       console.log(`Logged in successfully as ${email}`);
+      // Navigate to the Profile component
       navigate('/profile');
     } catch (error) {
       console.error('Error during login:', error);

@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +19,8 @@ const Register = () => {
         password: pass,
       });
       console.log('New user registered:', response.data);
-      // You can do something here after the user is registered successfully, e.g. show a success message or redirect to a new page
+      // Refresh the current page to show the user is logged in
+      navigate('.', { replace: true });
     } catch (error) {
       console.error('Error during registration:', error);
       setError('An error occurred while registering a new user');
