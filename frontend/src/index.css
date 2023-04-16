@@ -95,10 +95,6 @@ a:active { text-decoration: none; }
 .navbar .auth-links a:last-child {
   margin-right: 0;
 }
-#test {
-  margin-left: 10;
-  outline: ;
-}
 
 .navbar a:hover {
   color: #ec26d2;
