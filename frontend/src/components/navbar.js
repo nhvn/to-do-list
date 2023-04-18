@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 function Navbar({ loggedIn, setLoggedIn, userName, setUserName }) {
-
   useEffect(() => {
     const fetchLoginStatus = async () => {
       try {
@@ -16,10 +15,9 @@ function Navbar({ loggedIn, setLoggedIn, userName, setUserName }) {
         console.log(error);
       }
     };
-  
+
     fetchLoginStatus();
   }, [setLoggedIn, setUserName]);
-  
 
   const handleLogout = () => {
     axios
@@ -34,7 +32,7 @@ function Navbar({ loggedIn, setLoggedIn, userName, setUserName }) {
       .catch((error) => {
         console.log(error);
       });
-  };  
+  };
 
   return (
     <nav className='navbar'>
@@ -42,14 +40,16 @@ function Navbar({ loggedIn, setLoggedIn, userName, setUserName }) {
         <h1>Task Master</h1>
       </a>
       <div className='nav-links'>
-        <div className='links'>
-          <a href='/profile'>My Tasks</a>
-          <a href='/create'>Create Task</a>
-        </div>
+        {loggedIn && (
+          <div className='links'>
+            <a href='/profile'>My Tasks</a>
+            <a href='/create'>Create Task</a>
+          </div>
+        )}
         {loggedIn ? (
           <div className='user-info'>
             <span>{userName}</span>
-            <div className="logout-container">
+            <div className='logout-container'>
               <button onClick={handleLogout}>Logout</button>
             </div>
           </div>
