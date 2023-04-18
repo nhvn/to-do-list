@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../authContext';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -8,6 +9,7 @@ const Register = () => {
   const [pass, setPass] = useState('');
   const [error, setError] = useState('');
 
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,8 +21,18 @@ const Register = () => {
         password: pass,
       });
       console.log('New user registered:', response.data);
-      // Refresh the current page to show the user is logged in
-      navigate('.', { replace: true });
+
+      // Log in after successful registration
+      const loginResponse = await axios.post('http://localhost:8000/login', {
+        email,
+        password: pass,
+      });
+
+      // Pass the received token or session information to the handleLogin function
+      handleLogin(loginResponse.data);
+
+      // Navigate to the profile after successful login
+      navigate('/profile');
     } catch (error) {
       console.error('Error during registration:', error);
       setError('An error occurred while registering a new user');
