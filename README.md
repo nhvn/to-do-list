@@ -65,4 +65,4 @@ Users
 | password   | VARCHAR(255) | NOT NULL                             |
 | created_at | TIMESTAMP    | DEFAULT NOW()                        |
 
-
+Notes: The web application is still in early development and there's sample data for illustration purposes.
