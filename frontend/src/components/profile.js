@@ -31,10 +31,9 @@ function Profile() {
     { id: 9, content: "Client feedback meeting at 3 PM", color: "#fffffc" },
     { id: 10, content: "New coffee machine in the break room!", color: "#ff9f9f" },
     { id: 11, content: "Sign up for the company picnic", color: "#d0f4de" },
-    { id: 12, content: "IT system upgrade this weekend", color: "#e4c1f9" },
+    { id: 12, content: "IT system upgrade this weeke nd", color: "#e4c1f9" },
     { id: 13, content: "Reminder: Clean your desk before leaving", color: "#fcf6bd" },
     { id: 14, content: "New security protocols start next month", color: "#f0efeb" },
-    // { id: 15, content: "Volunteer opportunity: local food bank", color: "#d8e2dc" },
   ]);
 
   const addItem = (section) => {
