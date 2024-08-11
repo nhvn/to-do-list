@@ -61,44 +61,50 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* max-width: 800px; */
-  width: 88%;
+  max-width: 1200px; /* Match this with the content max-width */
+  width: 100%;
   margin: 0 auto;
+  padding: 0 20px; /* Add padding to match content padding */
+  box-sizing: border-box;
   border-bottom: 1px solid #f2f2f2;
-  margin-bottom: 30px;
+  /* margin-bottom: 10px; */
 }
+
 .navbar h1 {
   color: #422ba8;
 }
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+
 .navbar .nav-links {
   display: flex;
 }
-.navbar .links,
-.navbar .auth-links {
+
+.navbar .links, .navbar .auth-links {
   display: flex;
   align-items: center;
 }
-.navbar .links a,
-.navbar .auth-links a {
+
+.navbar .links a, .navbar .auth-links a {
   color: #422ba8;
   padding: 40px 15px;
 }
-.navbar .links a:last-child,
-.navbar .auth-links a:last-child {
-  margin-right: auto;
+
+.navbar .links a:last-child, .navbar .auth-links a:last-child {
+  margin-right: 0; /* Remove auto margin */
 }
 
 .navbar a:hover {
   color: #ec26d2;
 }
+
 .logout-container {
   display: inline-block;
   margin-left: 10px;
 }
+
 .logout-container button {
   border: none;
   padding: 10px 20px;
@@ -108,58 +114,34 @@ a:active { text-decoration: none; }
   cursor: pointer;
   border-radius: 10px;
 }
+
 .logout-container button:hover {
   background-color: #da9a95;
 }
+
 .user-info {
-  margin: auto;
+  margin: auto 0;
   margin-left: 15px;
-  margin-right: 35px;
 }
 
 
 /*home css*/
 .home h1{
   color: #422ba8;
-  text-align: center;
+  margin-bottom: 20px;
 }
 .mission h2{
-  padding: 20px;
   margin-top: 50px;
   color:#422ba8;
-  text-align: center;
 }
 .mission p{
-  text-align: center;
-  padding: 20px;
-  margin-left: 70px;
-  margin-right: 70px;
   font-size: 20px;
 }
 .start h2{
-  padding: 20px;
-  margin-top: 50px;
   color:#422ba8;
-  text-align: center;
 }
 .start p{
-  text-align: center;
-  padding: 20px;
-  margin-left: 70px;
-  margin-right: 70px;
   font-size: 20px;
-}
-.home button{
-  display: flex;
-  align-content: center;
-  margin-top: 70px;
-  margin-left: 700px;
-  background: #422ba8;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 .buttons{
   display: flex;
@@ -171,6 +153,37 @@ a:active { text-decoration: none; }
   max-width: 300px;
   height: auto;
   margin: 10px;
+}
+.home {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.hero-image {
+  width: 100%;
+  height: 400px; 
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.content {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px;
+}
+.mission, .start {
+  margin-bottom: 40px;
+}
+h2 {
+  color: #422ba8;
+  margin-bottom: 15px;
+}
+p {
+  line-height: 1.6;
 }
 
 /* register css */
